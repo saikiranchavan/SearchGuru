@@ -10,7 +10,7 @@ export class RegisterService {
   constructor(private http:HttpClient) { }
 
   userRegister(){
-    const c=new trainerClass();
-    this.http.post('http://localhost:8081/api/userregister',)._subscribe
+    const c=new trainerClass(a,b,c,d,e,f);
+    //this.http.post('http://localhost:8081/api/userregister',)._subscribe
   }
 }

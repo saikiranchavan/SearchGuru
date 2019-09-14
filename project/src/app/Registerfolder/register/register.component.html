@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  
+  <title>Business Unit</title>
+  <style>
+	.navright{
+		float:left;
+		
+		margin-left:935px;
+		
+	}
+  </style>
+  <script>
+			function checkPassword(form) { 
+                password1 = form.password1.value; 
+                password2 = form.password2.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome to TSW(Trainer Search Website)") 
+                    return true; 
+                } 
+            }
+		</script>
+ </head>
+ <body>
+	<div class="container-fluid">
+            <h2 style="text-align:center">User Registration</h2>   
+            <form  onSubmit="return checkPassword(this)"style="width:300px;">
+            <div class="form-group">
+				<label for="name">User Name</label>
+				<input type="text" placeholder="Full Name" id="name" class="form-control" autofocus required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" placeholder="Email" id="user_email" required>
+			</div>
+			<div class="form-group">
+				<label for="number">Phone No.</label>
+				<input type="tel" id="phone" class="form-control" placeholder="phone-no." pattern="[0-9]{10}" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="pass" name="password1" class="form-control" placeholder="password" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Confirm Password</label>
+				<input type="password" id="pass" name="password2" class="form-control" placeholder="password" required>
+			</div>
+			<button type="submit"  routerLink="" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	
+ </body>
+</html>

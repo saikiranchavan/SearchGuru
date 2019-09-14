@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes"> -->
+  <script src="E:\jquery-3.4.1.js" type="text/javascript"></script>
+  <!-- <script>
+    
+	/*$(document).ready(function(){
+		$("button").click(function(){
+			$("form").hide("fast",function(){
+				
+				document.getElementById("alert_1").innerHTML="Your data has been submitted";
+			});
+		});
+	});*/
+  </script> -->
+  <title>Business Unit</title>
+  <style>
+	.navright{
+		float:left;
+		
+		margin-left:935px;
+		
+	}
+	.wrapper {
+    text-align: center;
+		}
+
+	.button_1 {
+    position: center;
+    
+		}
+  </style>
+  <script>
+	
+			function checkPassword(form) { 
+                password1 = form.password1.value; 
+                password2 = form.password2.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome to TSW(Trainer Search Website)") 
+                    return true; 
+                } 
+            }
+  </script>
+  
+ </head>
+ <body>
+	<div class="container-fluid">
+        <h2 style="text-align: center">Mentor Registration</h2>
+		<form  onsubmit="return checkPassword(this)" >
+            <div class="row">
+			<div class="form-group col-sm-4">
+				<label for="name">Mentor Name</label>
+				<input type="text" placeholder="Full Name" id="name" [(ngModel)]="tname" class="form-control" autofocus required>
+			</div>
+			<div class="form-group col-sm-4">
+				<label for="user_email">Email</label>
+				<input type="email" required class="form-control" [(ngModel)]="temail" placeholder="Email" id="user_email" required>
+			</div>
+			<div class="form-group col-sm-4">
+				<label for="phone">Phone No.</label>
+				<input type="tel" id="phone" pattern ="[0-9]{10}"class="form-control" [(ngModel)]="tphone" placeholder="phone-no." required>
+			</div>
+			</div>
+			<div class="row">
+			<div class="form-group col-sm-4">
+			<label for="example-time-input1" > Start Date</label>
+			<div class="col-30">
+				<input class="form-control" [(ngModel)]="tstart_date" type="date"  id="example-time-input1" required>
+			</div>
+			</div>
+			<div class="form-group col-sm-4">
+			<label for="example-time-input2" >End Date</label>
+			<div class="col-20">
+				<input class="form-control" [(ngModel)]="tend_date" type="date"  id="example-time-input2" required>
+			</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-4">
+				<label for="example-time-input3" > Start Time</label>
+				<div class="col-30">
+					<input class="form-control" [(ngModel)]="tstart_time" type="datetime"  id="example-time-input3" required>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+				<label for="example-time-input4" >End Time</label>
+				<div class="col-20">
+					<input class="form-control" [(ngModel)]="tend_time" type="datetime"  id="example-time-input4" required>
+				</div>
+			</div>
+			<div class="form-group col-sm-4">
+			  <label for="sel2">Technologies Your familiar with</label>
+				  <select multiple class="form-control" id="sel2" name="sellist2" required>
+					<option (click)>Cloud Computing</option>
+					<option>Mean Stack</option>
+					<option>Data Analytics</option>
+					<option>AI Robotics</option>
+					<option>Data Science</option>
+				  </select>
+			</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-4">
+					<label for="linked in profile">LinkedIn ProfileId</label>
+					<input type="text" id="linked" class="form-control" placeholder="LinkedIn ProfileId" required>
+				</div>
+
+				<div class="form-group col-sm-4">
+					<label for="password">Password</label>
+					<input type="password" name="password1" id="pass1" class="form-control" placeholder="password" required>
+				</div>
+				
+				<div class="form-group col-sm-4">
+					<label for="password">Confirm Password</label>
+					<input type="password" id="pass2" class="form-control" placeholder="password" name="password2"required>
+				</div>
+            </div>
+			<div class="wrapper">
+				<button (click)="" type="submit" class="btn btn-primary button_1" value="submit">Submit</button>>
+			</div>
+		</form>
+	</div>
+	
+ </body>
+</html>

@@ -10,13 +10,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private router:Router,private service:LoginService) { }
   user;
-  pass;
+  pass1;
 
-  myObj={'username':this.user,'password':this.pass}
+  myObj={'username':this.user,'password':this.pass1}
 
   login(){
-    this.router.navigate(['/login'],{queryParams:{'username':this.user,'password':this.pass}});
-    this.service.getMethod(this.user,this.pass);
+    //this.router.navigate(['/login'],{queryParams:{'username':this.user,'password':this.pass}});
+    this.service.getMethod(this.user,this.pass1);
+    console.log('http://localhost:8081/api/userlogin?username='+this.user+'&password='+this.pass1);
   }
   ngOnInit() {
   }

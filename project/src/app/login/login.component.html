@@ -14,16 +14,26 @@
         <input type="password" #pass="ngModel" [(ngModel)]="pass1" class="form-control"  #email="ngModel" [class.is-invalid]="pass.invalid&&pass.touched" name="exampleInputPassword1" placeholder="Password" required>
         <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">Password is required</small>
       </div>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <b>Login As:</b>
+      <br>
+      <div class="row">
+        <div class="radio col-sm-1">
+          <label><input type="radio" name="optradio" [value]=1 [(ngModel)]="a" checked>User</label>
+        </div>
+        <div class="radio col-sm-1">
+          <label><input type="radio" name="optradio" [value]=2 [(ngModel)]="a" >Mentor</label>
+        </div>
+        <div class="radio col-sm-1">
+          <label><input type="radio" name="optradio" [value]=3 [(ngModel)]="a" >Admin</label>
+        </div>
       </div>
       <div class="row" style="margin-top: 10px">
-        <button type="button" (click)="login()" class="btn btn-primary " >Login</button>
-        <!-- <button routerLink="../register/user_register"class="btn btn-primary button" style="margin-left: 5px" >Login</button> -->
-        <!-- <nav style="margin-left: 10px"> -->
-        <!-- /<li class="dropdown"> -->
-          <button class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#"  style="margin-left: 5px">Sign Up<span class="caret" ></span></button>
+        <button type="button" (click)="Login()" class="btn btn-primary " >Login</button>
+        <button class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#"  style="margin-left: 5px">Sign Up<span class="caret" ></span></button>
           <ul class="dropdown-menu">
             <li><a routerLink="../register/user_register">User Register</a></li>
             <li><a  routerLink="../register/trainer_register"href="#">Trainer Register</a></li>

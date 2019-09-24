@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  
+  <title>Business Unit</title>
+  <style>
+	.navright{
+		float:left;
+		
+		margin-left:935px;
+		
+	}
+  </style>
+  <script>
+			function checkPassword(form) { 
+                password1 = form.password1.value; 
+                password2 = form.password2.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome to TSW(Trainer Search Website)") 
+                    return true; 
+                } 
+            }
+		</script>
+ </head>
+ <body>
+	<div class="container-fluid">
+            <h2 style="text-align:center">User Registration</h2>   
+            <form  onSubmit="return checkPassword(this)"style="width:300px;">
+            <div class="form-group">
+				<label for="name">User Name</label>
+				<input type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" placeholder="Full Name" name="name" [(ngModel)]="userData.name" id="name" class="form-control" autofocus required>
+				<small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" placeholder="Email" name="email" [(ngModel)]="userData.email" id="name" class="form-control" autofocus required>
+				<small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+			</div>
+			<div class="form-group">
+				<label for="number">Phone No.</label>
+				<input type="tel" #phone="ngModel" id="phone" pattern ="^[0-9]{10}$" [class.is-invalid]="phone.invalid && (phone.touched||phone.untouched)" class="form-control" name="phone-no" [(ngModel)]="trainerData.Phoneno" placeholder="phone-no." required>
+				<div *ngIf="phone.errors&&(phone.invalid||phone.touched)">
+					<small class="text-danger" *ngIf="phone.errors.required">Phone number is required </small>
+					<small class="text-danger" *ngIf="phone.errors.pattern">Phone number pattern requires 10 numbers </small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="text" #pass1="ngModel" [class.is-invalid]="pass1.invalid && pass1.touched" placeholder="Password" name="pass1" [(ngModel)]="trainerData.Mentorname" id="name" class="form-control" autofocus required>
+				<small class="text-danger" [class.d-none]="pass1.valid || pass1.untouched">Password is required</small>
+			</div>
+			<div class="form-group">
+				<label for="password">Confirm Password</label>
+				<input type="text" #pass2="ngModel" [class.is-invalid]="pass2.invalid && pass2.touched" placeholder="Confirm password" name="name" [(ngModel)]="trainerData.Mentorname" id="name" class="form-control" autofocus required>
+				<small class="text-danger" [class.d-none]="pass2.valid || pass2.untouched">Password is required</small>
+			</div>
+			<button type="submit"  class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	
+ </body>
+</html>

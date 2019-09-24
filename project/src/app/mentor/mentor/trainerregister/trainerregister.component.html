@@ -66,7 +66,7 @@
 	<div class="container-fluid">
         <h2 style="text-align: center">Mentor Registration</h2>
 		<!-- {{trainerData | json}} -->
-		<form  onsubmit="return checkPassword(this)" >
+		<form  #mentorform="ngForm" ngSubmit="submit()" novalidate >
             <div class="row">
 			<div class="form-group col-sm-4">
 				<label for="name">Mentor Name</label>
@@ -121,8 +121,9 @@
 			
 			<div class="form-group col-sm-4">
 				<label for="password">Confirm Password</label>
-				<input type="password" name="pass2" #pass2="ngModel" [class.is-invalid]="pass2.invalid && pass2.touched" ngModel class="form-control" placeholder="password" name="password2"required>
+				<input type="password" name="pass2" #pass2="ngModel" [class.is-invalid]="pass2.invalid && pass2.touched" [(ngModel)]="checkPass" class="form-control" placeholder="password" name="password2"required>
 				<small class="text-danger" [class.d-none]="pass2.valid || pass2.untouched">password is required</small>
+				<small class="text-danger" [class.d-none]="pass1.untouched||pass2.untouched||checkValidate()">passwords are not matching</small>
 			</div>
 			
 			
@@ -131,8 +132,8 @@
 				
 				<div class="form-group col-sm-4">
 					<label for="sel2">Technologies Your familiar with</label>
-						<select   required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
-							<option value="" selected>hellow</option>
+						<select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
+							<!-- <option value="" selected>hellow</option> -->
 							<option>Cloud Computing</option>
 							<option>Mean Stack</option>
 							<option>Data Analytics</option>
@@ -145,7 +146,8 @@
 			
 		</div>
 			<div class="wrapper">
-				<button   type="submit" class="btn btn-primary button_1 col-sm-3" value="submit">Submit</button>
+				{{mentorform.form.invalid}}{{checkValidate()}}
+				<button  [disabled]="(mentorform.form.invalid || !(checkValidate()))" type="submit" class="btn btn-primary button_1 col-sm-3" value="submit">Submit</button>
 			</div>
 		</form>
 	</div>

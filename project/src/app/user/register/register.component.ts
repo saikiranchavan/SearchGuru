@@ -9,7 +9,7 @@ import { userClass } from '../userRClass';
 export class RegisterComponent implements OnInit {
   
   constructor() { }
-  userData=new userClass("","",123456789,"");
+  userData=new userClass("","",1234567890,"");
   ngOnInit() {
   }
 

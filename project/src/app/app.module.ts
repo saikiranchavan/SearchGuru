@@ -14,6 +14,7 @@ import { MentorStatusComponent } from './user/mentor-status/mentor-status.compon
 //import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { MentorModule } from './mentor/mentor/mentor.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     UserModule,
     FormsModule,
+    MentorModule,
     AppRoutingModule,
     HttpClientModule
   ],

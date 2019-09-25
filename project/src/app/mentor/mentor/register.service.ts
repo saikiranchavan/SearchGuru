@@ -8,9 +8,9 @@ import { trainerClass } from './trainerClass';
 export class RegisterService {
 
   constructor(private http:HttpClient) { }
-
-  userRegister(){
+  acknowledge;
+  trainerRegister(trainerData){
    // const c=new trainerClass(a,b,c,d,e,f);
-    //this.http.post('http://localhost:8081/api/userregister',)._subscribe
+    return this.http.post('http://localhost:8091/api/mentorregister',trainerData)
   }
 }

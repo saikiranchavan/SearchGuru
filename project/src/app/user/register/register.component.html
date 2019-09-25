@@ -13,53 +13,25 @@
 		
 	}
   </style>
- <script> 
-          
-	// Function to check Whether both passwords 
-	// is same or not. 
-	function checkPassword(form) { 
-		password1 = form.pass1.value; 
-		password2 = form.pass2.value; 
-
-		// If password not entered 
-		if (pass1 == '') 
-			alert ("Please enter Password"); 
-			  
-		// If confirm password not entered 
-		else if (pass2 == '') 
-			alert ("Please enter confirm password"); 
-			  
-		// If Not same return False.     
-		else if (pass1 != pass2) { 
-			alert ("\nPassword did not match: Please try again...") 
-			return false; 
-		} 
-
-		// If same return True. 
-		else{ 
-			alert("Password Match: Welcome to GeeksforGeeks!") 
-			return true; 
-		} 
-	} 
-</script> 
- </head>
+  </head>
  <body>
 	<div class="container-fluid">
             <h2 style="text-align:center">User Registration</h2>   
-            <form #userform="ngForm"style="width:300px;">
+			<p *ngIf="acknow">{{acknowledge}}</p>
+		<form #userform="ngForm" (ngSubmit)="submit()" style="width:300px;">
             <div class="form-group">
 				<label for="name">User Name</label>
-				<input type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" placeholder="Full Name" name="name" [(ngModel)]="userData.name" id="name" class="form-control" autofocus required>
+				<input type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" placeholder="Full Name" name="Username" [(ngModel)]="userData.Username" id="name" class="form-control" autofocus required>
 				<small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="text" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" placeholder="Email" name="email" [(ngModel)]="userData.email" id="name" class="form-control" autofocus required>
+				<input type="text" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" placeholder="Email" name="Email" [(ngModel)]="userData.Email" id="name" class="form-control" autofocus required>
 				<small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
 			</div>
 			<div class="form-group">
 				<label for="number">Phone No.</label>
-				<input type="tel" #phone="ngModel" id="phone" pattern ="^[0-9]{10}$" [class.is-invalid]="phone.invalid && (phone.touched||phone.untouched)" class="form-control" name="phone-no" [(ngModel)]="userData.Phoneno" placeholder="phone-no." required>
+				<input type="tel" #phone="ngModel" id="phone" pattern ="^[0-9]{10}$" [class.is-invalid]="phone.invalid && (phone.touched||phone.untouched)" class="form-control" name="Phoneno" [(ngModel)]="userData.Phoneno" placeholder="phone-no." required>
 				<div *ngIf="phone.errors&&(phone.invalid||phone.touched)">
 					<small class="text-danger" *ngIf="phone.errors.required">Phone number is required </small>
 					<small class="text-danger" *ngIf="phone.errors.pattern">Phone number pattern requires 10 numbers </small>
@@ -67,15 +39,16 @@
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input type="text" #pass1="ngModel" [class.is-invalid]="pass1.invalid && pass1.touched" placeholder="Password" name="pass1" [(ngModel)]="userData.Password" id="name" class="form-control" autofocus required>
+				<input type="password" #pass1="ngModel" [class.is-invalid]="pass1.invalid && pass1.touched" placeholder="Password" name="Password" [(ngModel)]="userData.Password" id="name" class="form-control" autofocus required>
 				<small class="text-danger" [class.d-none]="pass1.valid || pass1.untouched">Password is required</small>
 			</div>
 			<div class="form-group">
 				<label for="password">Confirm Password</label>
-				<input type="text" #pass2="ngModel" [class.is-invalid]="pass2.invalid && pass2.touched" placeholder="Confirm password" name="pass2" [(ngModel)]="userData.Password" id="name" class="form-control" autofocus required>
+				<input type="password" #pass2="ngModel" [class.is-invalid]="pass2.invalid && pass2.touched" placeholder="Confirm password" name="pass2" [(ngModel)]="checkPass" id="name" class="form-control" autofocus required>
 				<small class="text-danger" [class.d-none]="pass2.valid || pass2.untouched">Password is required</small>
+				<small class="text-danger" [class.d-none]="pass1.untouched||pass2.untouched||checkValidate()">passwords are not matching</small>
 			</div>
-			<button type="submit"  [disabled]="userform.form.invalid"class="btn btn-primary">Submit</button>
+			<button type="submit"  [disabled]="userform.form.invalid||!checkValidate()"class="btn btn-primary">Submit</button>
 		</form>
 	</div>
 	

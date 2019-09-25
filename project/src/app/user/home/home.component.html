@@ -1,34 +1,43 @@
 <div class="container-fluid">
-<form >
+<form  #searchForm="ngForm" (ngSubmit)="submit()">
     <div class="row">
 
     <div class="form-group col-sm-12" >
         <label for="tech">Search Technology:</label>
-        <input type="text" class="form-control" placeholder="Search Technology" name="search-tech" aria-label="Search" required>
+        <input type="text" class="form-control" #name1="ngModel" placeholder="Search Technology" [class.is-invalid]="name1.invalid && name1.touched" [(ngModel)]="search" name="search-tech" aria-label="Search" required>
+        <small class="text-danger" [class.d-none]="name1.valid || name1.untouched">Name is required</small>
+
     </div>
 
             
         <div class="form-group col-sm-3">
             <label for="start">Start Date</label>
-            <input class="form-control " type="date" placeholder="months" required>
+            <input class="form-control " #startdate="ngModel" [(ngModel)]="date1" type="date" [class.is-invalid]="startdate.invalid && startdate.touched" name="sdate" placeholder="months" required>
+            <small class="text-danger" [class.d-none]="startdate.valid || startdate.untouched">Start Date is required</small>
+
         </div>
         <div class="form-group col-sm-3">
             <label for="start">End Date</label>
-            <input class="form-control " type="date" placeholder="months" required>
+            <input class="form-control " type="date" #enddate="ngModel" [class.is-invalid]="enddate.invalid && enddate.touched" [(ngModel)]="date2" name="edate" placeholder="months" required>
+            <small class="text-danger" [class.d-none]="enddate.valid || enddate.untouched">Name is required</small>
+
         </div>
         <div class="form-group col-sm-3">
             <label for="timestart">Start Time</label>
-            <input class="form-control" type="time" value="13:45:00" id="example-time-input" required>
+            <input class="form-control" type="time"#starttime="ngModel" [(ngModel)]="time1" name="stime" [class.is-invalid]="starttime.invalid && starttime.touched" value="13:45:00" id="example-time-input" required>
+            <small class="text-danger" [class.d-none]="starttime.valid || starttime.untouched">Name is required</small>
+
 			
         </div>
         <div class="form-group col-sm-3">
             <label for="timestart">End Time</label>
-            <input class="form-control" type="time" value="13:45:00" id="example-time-input" required>
-			
+            <input class="form-control" type="time" #endtime="ngModel" name="etime" [class.is-invalid]="endtime.invalid && endtime.touched"  [(ngModel)]="time2" value="13:45:00" id="example-time-input" required>
+            <small class="text-danger" [class.d-none]="endtime.valid || endtime.untouched">Name is required</small>
+
         </div>    
     </div>
     <div class="wrapper">
-     <a routerLink="../user/mentor_search"><button type="submit" class="btn btn-primary button" >Search</button></a>
+     <a><button type="submit"  [disabled]="searchForm.form.invalid" class="btn btn-primary button" >Search</button></a>
     </div>
 </form>
 </div>

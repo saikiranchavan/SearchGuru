@@ -30,7 +30,7 @@ module.exports=function(router){
                 if(err){
                     return res.status(400).json(err);
                 }
-                res.status(200).json(note)
+                res.status(200).json("trainer data has been saved")
             })
         }
     })

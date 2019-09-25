@@ -4,18 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width initial-scale=1.0">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-  <script src="E:\jquery-3.4.1.js" type="text/javascript"></script>
-	<script>
-    
-	/*$(document).ready(function(){
-		$("button").click(function(){
-			$("form").hide("fast",function(){
-				
-				document.getElementById("alert_1").innerHTML="Your data has been submitted";
-			});
-		});
-	});*/
-  </script> 
   <title>Business Unit</title>
   <style>
 	.navright{
@@ -33,40 +21,14 @@
     
 		}
   </style>
-  <script>
-	
-			function checkPassword(form) { 
-                password1 = form.password1.value; 
-                password2 = form.password2.value; 
-  
-                // If password not entered 
-                if (password1 == '') 
-                    alert ("Please enter Password"); 
-                      
-                // If confirm password not entered 
-                else if (password2 == '') 
-                    alert ("Please enter confirm password"); 
-                      
-                // If Not same return False.     
-                else if (password1 != password2) { 
-                    alert ("\nPassword did not match: Please try again...") 
-                    return false; 
-                } 
-  
-                // If same return True. 
-                else{ 
-                    alert("Password Match: Welcome to TSW(Trainer Search Website)") 
-                    return true; 
-                } 
-            }
-  </script>
   
  </head>
  <body>
 	<div class="container-fluid">
         <h2 style="text-align: center">Mentor Registration</h2>
 		<!-- {{trainerData | json}} -->
-		<form  #mentorform="ngForm" ngSubmit="submit()" novalidate >
+		<p *ngIf="acknow">{{acknowledge}}</p>
+		<form  #mentorform="ngForm" (ngSubmit)="submit()" novalidate >
             <div class="row">
 			<div class="form-group col-sm-4">
 				<label for="name">Mentor Name</label>
@@ -146,7 +108,7 @@
 			
 		</div>
 			<div class="wrapper">
-				{{mentorform.form.invalid}}{{checkValidate()}}
+				<!-- {{mentorform.form.invalid}}{{checkValidate()}} -->
 				<button  [disabled]="(mentorform.form.invalid || !(checkValidate()))" type="submit" class="btn btn-primary button_1 col-sm-3" value="submit">Submit</button>
 			</div>
 		</form>

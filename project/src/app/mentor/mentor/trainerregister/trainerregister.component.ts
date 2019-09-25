@@ -24,9 +24,20 @@ export class TrainerregisterComponent implements OnInit {
   }
   tstart_date;
   tstart_time;
-
+  acknowledge;
+  acknow=false;
   submit(){
-    console.log(this.trainerData);
+    //console.log(this.trainerData);
+    this.service.trainerRegister(this.trainerData).subscribe(
+      data=>{
+        this.acknowledge=data;
+        this.acknow=true;
+      },
+      err=>{
+        this.acknowledge=err;
+        this.acknow=true;
+      }
+    );
   }
   
   

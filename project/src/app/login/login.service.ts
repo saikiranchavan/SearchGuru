@@ -9,7 +9,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getMethod(a,b){
-    this.http.get('http://localhost:8081/api/userlogin?username='+a+'&password='+b).subscribe(data=>{
+    this.http.get('http://localhost:8091/api/userlogin?username='+a+'&password='+b).subscribe(data=>{
       console.log(data);
     },
     err=>{

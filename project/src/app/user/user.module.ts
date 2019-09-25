@@ -6,6 +6,7 @@ import { AuthGuardService } from 'src/app/auth-guard.service';
 import { PaymentComponent } from './payment/payment.component';
 import { MentorStatusComponent } from './mentor-status/mentor-status.component';
 import { RegisterComponent } from './register/register.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -14,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
   PaymentComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild([
       {path:'register/user_register',component:RegisterComponent},
       {path:"user/mentor_search",component:MentorsearchComponent},
@@ -25,7 +27,7 @@ import { RegisterComponent } from './register/register.component';
           {path:'payment',component:PaymentComponent}
         ]
       
-      }
+      },
       
       
     ])

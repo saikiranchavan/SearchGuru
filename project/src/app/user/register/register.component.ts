@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { userClass } from '../userRClass';
 import { UserregisterService } from '../userregister.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   checkPass;
   acknow;
   acknowledge;
-  constructor(private service:UserregisterService) { }
+  constructor(private service:UserregisterService,private router:Router) { }
   userData=new userClass("sai kiran","",1234567890,"");
   ngOnInit() {
   }
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
       data=>{
         this.acknowledge=data;
         this.acknow=true;
+        this.router.navigate(['/login']);
       },
       err=>{
         this.acknowledge=err;

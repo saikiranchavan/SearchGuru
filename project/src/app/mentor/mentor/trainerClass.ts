@@ -7,9 +7,12 @@ export class trainerClass{
     public Phoneno:Number,
     public StartDate:Date,
     public EndDate:Date,
+    public Starttime:String,
+    public Endtime:String,
     public technologies:Array<string>,
     public Linked:String,
-    public Password:String){}
+    public Password:String,
+    public experience:Number){}
 
         
 }

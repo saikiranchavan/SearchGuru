@@ -15,6 +15,7 @@ import { MentorStatusComponent } from './user/mentor-status/mentor-status.compon
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MentorModule } from './mentor/mentor/mentor.module';
+import {NgxWebstorageModule} from 'ngx-webstorage'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MentorModule } from './mentor/mentor/mentor.module';
     FormsModule,
     MentorModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxWebstorageModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

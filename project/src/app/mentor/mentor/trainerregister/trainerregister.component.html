@@ -37,8 +37,10 @@
 			</div>
 			<div class="form-group col-sm-4">
 				<label for="user_email">Email</label>
-				<input type="email" required #email="ngModel" class="form-control" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="trainerData.Email" placeholder="Email" name="email" required>
-				<small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+				<input type="email" [email]="email_init" required #email="ngModel" class="form-control" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="trainerData.Email" placeholder="Email" name="email" required>
+				<!-- <small class="text-danger" [class.d-none]="(email.errors?.required||email.errors?.untouched)">Email is required</small> -->
+				<small class="text-danger" *ngIf="email.errors?.required&& email.touched">Email is required</small>
+				<small class="text-danger" [class.d-none]="!(email.errors?.email || email.errors?.untouched)">Email is invalid</small>
 			</div>
 			<div class="form-group col-sm-4">
 				<label for="phone">Phone No.</label>
@@ -50,30 +52,45 @@
 			</div>
 			</div>
 			<div class="row">
-			<div class="form-group col-sm-4">
+			<div class="form-group col-sm-3">
 			<label for="example-time-input1" > Start Date</label>
 			<div class="col-30">
-				<input class="form-control" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [(ngModel)]="trainerData.StartDate" type="datetime-local"  value="12-01-1998" name="example-time-input1" required>
+				<input class="form-control" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [(ngModel)]="trainerData.StartDate" type="date"  value="12-01-1998" name="example-time-input1" required>
 				<small class="text-danger" [class.d-none]="date.valid || date.untouched">Start date and time is required</small>
 			</div>
 			</div>
-			<div class="form-group col-sm-4">
+			<div class="form-group col-sm-3">
 			<label for="example-time-input2" >End Date</label>
 			<div class="col-20">
-				<input class="form-control" #date1="ngModel" [class.is-invalid]="date1.invalid && date1.touched" [(ngModel)]="trainerData.EndDate" type="datetime-local"  name="example-time-input2" required>
+				<input class="form-control" #date1="ngModel" [class.is-invalid]="date1.invalid && date1.touched" [(ngModel)]="trainerData.EndDate" type="date"  name="example-time-input2" required>
 				<small class="text-danger" [class.d-none]="date1.valid || date1.untouched">End date and time is required</small>
 			</div>
 			</div>
-
-			<div class="form-group col-sm-4">
-				<label for="linked in profile">LinkedIn ProfileId</label>
-				<input type="text" name="linked" #link="ngModel" [class.is-invalid]="link.invalid && link.touched" [(ngModel)]="trainerData.Linked" class="form-control" placeholder="LinkedIn ProfileId" required>
-				<small class="text-danger" [class.d-none]="link.valid || link.untouched">linked profile is required is required</small>
+			<div class="form-group col-sm-3">
+				<label for="example-time-input1" > Start time</label>
+				<div class="col-30">
+					<input class="form-control" #date3="ngModel" [class.is-invalid]="date3.invalid && date3.touched" [(ngModel)]="trainerData.Starttime" type="time"  value="2:3" name="example-time-input3" required>
+					<small class="text-danger" [class.d-none]="date3.valid || date3.untouched">Start  time is required</small>
+				</div>
 			</div>
+			<div class="form-group col-sm-3">
+				<label for="example-time-input2" >End time</label>
+				<div class="col-20">
+					<input class="form-control" #date4="ngModel" [class.is-invalid]="date4.invalid && date4.touched" [(ngModel)]="trainerData.Endtime" type="time"  name="example-time-input4" required>
+					<small class="text-danger" [class.d-none]="date4.valid || date4.untouched">End time is required</small>
+				</div>
+			</div>
+
+			
 			
 			</div>
 			<div class="row">
-				
+			
+				<div class="form-group col-sm-4">
+					<label for="linked in profile">LinkedIn ProfileId</label>
+					<input type="text" name="linked" #link="ngModel" [class.is-invalid]="link.invalid && link.touched" [(ngModel)]="trainerData.Linked" class="form-control" placeholder="LinkedIn ProfileId" required>
+					<small class="text-danger" [class.d-none]="link.valid || link.untouched">linked profile is required is required</small>
+				</div>	
 			
 			<div class="form-group col-sm-4">
 				<label for="password">Password</label>
@@ -89,23 +106,28 @@
 			</div>
 			
 			
-			
+			<div class="form-group col-sm-4">
+				<label for="exper">Experience</label>
+				<input type="number" name="exper" #experience="ngModel" [class.is-invalid]="experience.invalid && experience.touched" name="pass1" [(ngModel)]="trainerData.experience" class="form-control" placeholder="password" required>
+				<small class="text-danger" [class.d-none]="experience.valid || experience.untouched">Experience  is required</small>
+			</div>
 				
 				
-				<div class="form-group col-sm-4">
-					<label for="sel2">Technologies Your familiar with</label>
-						<select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
-							<!-- <option value="" selected>hellow</option> -->
-							<option>Cloud Computing</option>
-							<option>Mean Stack</option>
-							<option>Data Analytics</option>
-							<option>AI Robotics</option>
-							<option>Data Science</option>
-						</select>
-						<small class="text-danger" [class.d-none]="grp.valid || grp.untouched">select any one of the technology</small>
-				</div>
+				
 				
 			
+		</div>
+		<div class="form-group col-sm-4">
+			<label for="sel2">Technologies Your familiar with</label>
+				<select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
+					<!-- <option value="" selected>hellow</option> -->
+					<option>Cloud Computing</option>
+					<option>Mean Stack</option>
+					<option>Data Analytics</option>
+					<option>AI Robotics</option>
+					<option>Data Science</option>
+				</select>
+				<small class="text-danger" [class.d-none]="grp.valid || grp.untouched">select any one of the technology</small>
 		</div>
 			<div class="wrapper">
 				<!-- {{mentorform.form.invalid}}{{checkValidate()}} -->

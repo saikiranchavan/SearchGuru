@@ -26,8 +26,11 @@
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="text" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" placeholder="Email" name="Email" [(ngModel)]="userData.Email" id="name" class="form-control" autofocus required>
-				<small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+				<input type="text" email #email="ngModel" [class.is-invalid]="email.invalid && email.touched" placeholder="Email" name="Email" [(ngModel)]="userData.Email" id="name" class="form-control" autofocus required>
+				<small class="text-danger" [class.d-none]="!(email.errors?.email || email.errors?.untouched)">Email is invalid</small>
+				<small class="text-danger" *ngIf="email.errors?.required&& email.touched">Email is required</small>
+
+				<!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small> -->
 			</div>
 			<div class="form-group">
 				<label for="number">Phone No.</label>

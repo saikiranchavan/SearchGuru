@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form #myform="ngForm"  class="form form-login">
+  <form #myform="ngForm" (ngSubmit)="Login()"  class="form form-login">
       <h2 style="text-align: center">Login Form</h2>
       
       <!-- {{myform.value | json}} -->
@@ -32,14 +32,20 @@
         </div>
       </div>
       <div class="row" style="margin-top: 10px">
-        <button type="button" (click)="Login()" class="btn btn-primary " >Login</button>
+        <button type="submit"  class="btn btn-primary " >Login</button>
+      
+      
         <button class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#"  style="margin-left: 5px">Sign Up<span class="caret" ></span></button>
-          <ul class="dropdown-menu">
-            <li><a routerLink="../register/user_register">User Register</a></li>
-            <li><a  routerLink="../register/trainer_register"href="#">Trainer Register</a></li>
-          </ul>
-          <!-- </li> -->
-          <!-- </nav> -->
-      </div>
-  </form>
+              <ul class="dropdown-menu">
+                <li><a routerLink="../register/user_register">User Register</a></li>
+                <li><a  routerLink="../register/trainer_register"href="#">Trainer Register</a></li>
+              </ul>
+              <!-- </li> -->
+              <!-- </nav> -->
+            </div>  
+
+    </form>
+        
+      
+  
 </div>

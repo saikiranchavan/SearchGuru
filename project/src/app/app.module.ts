@@ -36,7 +36,7 @@ import {NgxWebstorageModule} from 'ngx-webstorage'
     MentorModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxWebstorageModule
+    NgxWebstorageModule.forRoot()
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

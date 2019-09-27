@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   user;
   pass1;
   a;
+  username_loc=[];
   myObj={'username':this.user,'password':this.pass1}
   Login(){
     if(this.a==1){
@@ -30,7 +31,15 @@ export class LoginComponent implements OnInit {
   userLogin(){
     //this.router.navigate(['/login'],{queryParams:{'username':this.user,'password':this.pass}});
     //console.log(this.a+"inside the user Login")
-    this.service.getMethod1(this.user,this.pass1);
+    this.service.getMethod1(this.user,this.pass1).subscribe(data=>{
+      console.log(data);
+      this.username_loc=["User",this.user];
+      this.localsto.store("user",this.username_loc);
+    },
+    err=>{
+      console.log('error in getting in login service');
+    }
+    )
     //console.log('http://localhost:8081/api/userlogin?username='+this.user+'&password='+this.pass1);
   }
 

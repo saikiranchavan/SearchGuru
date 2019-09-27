@@ -7,7 +7,8 @@ module.exports=function(router){
         
         //v=req.params.name;
         let a=req.query.username;
-        let b=req.query.password;    
+        let b=req.query.password; 
+        console.log(a+" "+b);   
         User.find({$and:[{"Email":a},{"Password":b}]},function(err,UserData){
             if(err)return console.log(err);
             match=UserData;

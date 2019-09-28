@@ -15,7 +15,8 @@ import { MentorStatusComponent } from './user/mentor-status/mentor-status.compon
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MentorModule } from './mentor/mentor/mentor.module';
-import {NgxWebstorageModule} from 'ngx-webstorage'
+import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NgxWebstorageModule} from 'ngx-webstorage'
     HomeComponent,
     TrainerregisterComponent,
     NotfoundComponent,
-    MentorStatusComponent
+    MentorStatusComponent,
+    NavbarComponent
     
     
   ],

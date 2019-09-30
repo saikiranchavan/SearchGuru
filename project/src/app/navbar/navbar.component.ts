@@ -30,6 +30,15 @@ export class NavbarComponent implements OnInit {
       this.check_localdata=true;
     }  
   }
+
+  routerCheck(){
+    if(this.commonService.check_Mentor_Login==true){
+      this.router.navigate(['home']);
+    }
+    else{
+      this.router.navigate(['mentorhome']);
+    }
+  }
   ngOnInit() {
   }
 

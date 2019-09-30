@@ -16,8 +16,8 @@ module.exports=function(router){
         var mentor=req.body;
         if(!mentor.Mentorname||!mentor.Email||
             !mentor.Phoneno||
-            !mentor.Starttime||
-            !mentor.Endtime||
+            //!mentor.Starttime||
+            //!mentor.Endtime||
             !mentor.StartDate||
             !mentor.EndDate||
             !mentor.technologies.length>0||

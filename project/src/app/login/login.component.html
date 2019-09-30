@@ -1,7 +1,9 @@
+
 <div class="container-fluid">
+   
   <form #myform="ngForm" (ngSubmit)="Login()"  class="form form-login">
       <h2 style="text-align: center">Login Form</h2>
-      
+      <p>{{data}}</p>
       <!-- {{myform.value | json}} -->
       <div class="form-group"  style="margin-top:20px ">
         <label for="exampleInputEmail1">Email address</label>

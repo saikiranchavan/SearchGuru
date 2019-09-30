@@ -55,18 +55,18 @@
 			<div class="form-group col-sm-3">
 			<label for="example-time-input1" > Start Date</label>
 			<div class="col-30">
-				<input class="form-control" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [(ngModel)]="trainerData.StartDate" type="date"  value="12-01-1998" name="example-time-input1" required>
+				<input class="form-control" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [(ngModel)]="trainerData.StartDate" type="datetime-local"  value="12-01-1998" name="example-time-input1" required>
 				<small class="text-danger" [class.d-none]="date.valid || date.untouched">Start date and time is required</small>
 			</div>
 			</div>
 			<div class="form-group col-sm-3">
 			<label for="example-time-input2" >End Date</label>
 			<div class="col-20">
-				<input class="form-control" #date1="ngModel" [class.is-invalid]="date1.invalid && date1.touched" [(ngModel)]="trainerData.EndDate" type="date"  name="example-time-input2" required>
+				<input class="form-control" #date1="ngModel" [class.is-invalid]="date1.invalid && date1.touched" [(ngModel)]="trainerData.EndDate" type="datetime-local"  name="example-time-input2" required>
 				<small class="text-danger" [class.d-none]="date1.valid || date1.untouched">End date and time is required</small>
 			</div>
 			</div>
-			<div class="form-group col-sm-3">
+			<!-- <div class="form-group col-sm-3">
 				<label for="example-time-input1" > Start time</label>
 				<div class="col-30">
 					<input class="form-control" #date3="ngModel" [class.is-invalid]="date3.invalid && date3.touched" [(ngModel)]="trainerData.Starttime" type="time"  value="2:3" name="example-time-input3" required>
@@ -79,7 +79,7 @@
 					<input class="form-control" #date4="ngModel" [class.is-invalid]="date4.invalid && date4.touched" [(ngModel)]="trainerData.Endtime" type="time"  name="example-time-input4" required>
 					<small class="text-danger" [class.d-none]="date4.valid || date4.untouched">End time is required</small>
 				</div>
-			</div>
+			</div> -->
 
 			
 			

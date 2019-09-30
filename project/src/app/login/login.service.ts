@@ -15,22 +15,10 @@ export class LoginService {
 
   getMethod2(a,b){
     console.log("mentor login"+a+" "+b);
-    this.http.get('http://localhost:8091/api/mentorlogin?username='+a+'&password='+b).subscribe(data=>{
-      console.log(data);
-    },
-    err=>{
-      console.log('error in getting in login service');
-    }
-    )
+    return this.http.get('http://localhost:8091/api/mentorlogin?username='+a+'&password='+b);
   }
 
   getMethod3(a,b){
-    this.http.get('http://localhost:8091/api/adminlogin?username='+a+'&password='+b).subscribe(data=>{
-      console.log(data);
-    },
-    err=>{
-      console.log('error in getting in login service');
-    }
-    )
+    return this.http.get('http://localhost:8091/api/adminlogin?username='+a+'&password='+b)
   }
 }

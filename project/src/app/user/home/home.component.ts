@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Time } from '@angular/common';
 import { stringify } from '@angular/compiler/src/util';
+import { UserregisterService } from '../userregister.service';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,24 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserregisterService) { }
   search:string;
   date1:Date;
   date2:Date;
-  time1:Time;
-  time2:Time;
-
+  //time1:Time;
+  //time2:Time;
+  object;
   submit(){
-    console.log(this.search+" "+this.date1+" "+this.date2+" "+this.time1+" "+this.time2);
+    // console.log(this.search+" "+this.date1+" "+this.date2+" "+this.time1+" "+this.time2);
+    console.log(this.search+" "+this.date1+" "+this.date2);
+    this.object={search:this.search,startdate:this.date1,enddate:this.date2}
+    this.userService.SearchMentor(this.object).subscribe(
+      data=>{
+        console.log(data);
+      },
+      err=>{
+        console.log("no search data is found");
+      });
   }
   ngOnInit() {
   }

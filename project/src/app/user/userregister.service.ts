@@ -12,4 +12,8 @@ export class UserregisterService {
     console.log(userData); 
     return this.http.post('http://localhost:8091/api/userregister',userData)
    }
+
+   SearchMentor(object){
+     return this.http.post('http://localhost:8091/api/search',object)
+   }
 }

@@ -2,7 +2,9 @@
 
         <nav class="navbar navbar-expand-sm navbar-inverse fixed-top col-sm-12  bg-primary navbar-dark">
   
-                <a class="navbar-brand" routerLink="home">SearchGuru</a>
+                <a class="navbar-brand" *ngIf="!commonService.mentorLogin()&&!commonService.adminLogin()" routerLink="home">SearchGuru</a>
+                <a class="navbar-brand" *ngIf="commonService.mentorLogin()" routerLink="mentorhome">SearchGuru</a>
+                <a class="navbar-brand" *ngIf="commonService.adminLogin()" routerLink="adminhome">SearchGuru</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -10,8 +12,14 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 
                 <ul class="navbar-nav">
-                  <li class="nav-item active">
+                  <li class="nav-item active" *ngIf="!commonService.mentorLogin()&&!commonService.adminLogin()">
                     <a class="nav-link" routerLink="home">Home</a>
+                  </li>
+                  <li class="nav-item active" *ngIf="commonService.mentorLogin()">
+                      <a class="nav-link" routerLink="mentorhome">MentorHome</a>
+                  </li>
+                  <li class="nav-item active" *ngIf="!commonService.mentorLogin()&&commonService.adminLogin()">
+                      <a class="nav-link" routerLink="adminhome">AdminHome</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -26,9 +34,9 @@
                 </ul>
                 <ul class="nav navbar-nav ml-auto rightCheck">
                   <li class="nav-item">
-                      <a class="nav-link" routerLink="mentor_status">Mentor_Status</a>
+                      <a class="nav-link" *ngIf="!commonService.mentorLogin()&&!commonService.adminLogin()" routerLink="mentor_status">Mentor_Status</a>
                   </li>
-                  <li class="dropdown" *ngIf="">
+                  <li class="dropdown" *ngIf="!commonService.checkLocalToken()">
                     <a class="dropdown-toggle nav-link active" data-toggle="dropdown" href="#"  >Register<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a routerLink="register/user_register">User Register</a></li>
@@ -36,11 +44,15 @@
                       
                     </ul>
                  </li>
-                 <li class="nav-item" *ngIf="false">
-                  <p class="navbar-text">WELCOME </p>
+                 <li class="nav-item" *ngIf="commonService.checkLocalToken()">
+                        <button class="btn btn-primary" (click)="commonService.LogoutUser()">Logout</button>
+                        
+                 </li>
+                 <li class="nav-item" *ngIf="commonService.checkLocalToken()">
+                  <p class="navbar-text">WELCOME {{this.commonService.getUserName()}} </p>
                   <!-- {{this.commonService.getUserName}}  -->
                  </li>
-                 <li class="dropdown" *ngIf="true">
+                 <li class="dropdown" *ngIf="!commonService.checkLocalToken()">
                   <a class="dropdown-toggle  nav-link" data-toggle="dropdown" href="#" >Login<span class="caret" ></span></a>
                   <ul class="dropdown-menu">
                     <li><a routerLink="login">User Login</a></li>

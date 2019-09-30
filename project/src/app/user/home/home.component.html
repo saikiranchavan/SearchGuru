@@ -12,17 +12,17 @@
             
         <div class="form-group col-sm-3">
             <label for="start">Start Date</label>
-            <input class="form-control " #startdate="ngModel" [(ngModel)]="date1" type="date" [class.is-invalid]="startdate.invalid && startdate.touched" name="sdate" placeholder="months" required>
+            <input class="form-control " #startdate="ngModel" [(ngModel)]="date1" type="datetime-local" [class.is-invalid]="startdate.invalid && startdate.touched" name="sdate" placeholder="months" required>
             <small class="text-danger" [class.d-none]="startdate.valid || startdate.untouched">Start Date is required</small>
 
         </div>
         <div class="form-group col-sm-3">
             <label for="start">End Date</label>
-            <input class="form-control " type="date" #enddate="ngModel" [class.is-invalid]="enddate.invalid && enddate.touched" [(ngModel)]="date2" name="edate" placeholder="months" required>
+            <input class="form-control " type="datetime-local" #enddate="ngModel" [class.is-invalid]="enddate.invalid && enddate.touched" [(ngModel)]="date2" name="edate" placeholder="months" required>
             <small class="text-danger" [class.d-none]="enddate.valid || enddate.untouched">Name is required</small>
 
         </div>
-        <div class="form-group col-sm-3">
+        <!-- <div class="form-group col-sm-3">
             <label for="timestart">Start Time</label>
             <input class="form-control" type="time"#starttime="ngModel" [(ngModel)]="time1" name="stime" [class.is-invalid]="starttime.invalid && starttime.touched" value="13:45:00" id="example-time-input" required>
             <small class="text-danger" [class.d-none]="starttime.valid || starttime.untouched">Name is required</small>
@@ -34,7 +34,7 @@
             <input class="form-control" type="time" #endtime="ngModel" name="etime" [class.is-invalid]="endtime.invalid && endtime.touched"  [(ngModel)]="time2" value="13:45:00" id="example-time-input" required>
             <small class="text-danger" [class.d-none]="endtime.valid || endtime.untouched">Name is required</small>
 
-        </div>    
+        </div>     -->
     </div>
     <div class="wrapper">
      <a><button type="submit"  [disabled]="searchForm.form.invalid" class="btn btn-primary button" >Search</button></a>

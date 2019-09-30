@@ -10,7 +10,7 @@ module.exports=function(router){
         let b=req.query.password; 
         console.log(a+" "+b);   
         User.find({$and:[{"Email":a},{"Password":b}]},function(err,UserData){
-            if(err)return console.log(err);
+            if(err)return console.log("no user found");
             match=UserData;
             if(UserData.length==0){
                 res.send("no user found");
@@ -46,16 +46,22 @@ module.exports=function(router){
         //v=req.params.name;
         let a=req.query.username;
         let b=req.query.password;    
-        User.find({"Username":a},{"Password":b},function(err,UserData){
-            if(err)return console.log(err);
-            match=UserData;
-            if(UserData.length==0){
-                res.send("no user found");
-            }
-            else{
-                res.json(UserData);
-            }
-        });
+        // User.find({"Username":a},{"Password":b},function(err,UserData){
+        //     if(err)return console.log(err);
+        //     match=UserData;
+        //     if(UserData.length==0){
+        //         res.send("no user found");
+        //     }
+        //     else{
+        //         res.json(UserData);
+        //     }
+        // });
+        if(a=="admin@gmail.com"&&b=="Admin123"){
+            res.json("success");
+        }
+        else{
+            res.send("admin is not found");
+        }
     })
 
     

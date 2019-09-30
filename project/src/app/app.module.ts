@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MentorModule } from './mentor/mentor/mentor.module';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { NavbarComponent } from './navbar/navbar.component'
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NavbarComponent } from './navbar/navbar.component'
     UserModule,
     FormsModule,
     MentorModule,
+    AdminModule,
     AppRoutingModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot()

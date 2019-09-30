@@ -19,7 +19,7 @@ export class TrainerregisterComponent implements OnInit {
   trainerData=new trainerClass("","",1234567890,new Date(2001,12,23,10,24,23),new Date(2001,10,1,22,10,8),"","",["",""],"","",1);
   constructor(private service:RegisterService,private router:Router) { }
   checkValidate(){
-    console.log("hello from validator");
+   // console.log("hello from validator");
     if(this.trainerData.Password==this.checkPass){
       
       return true;

@@ -14,10 +14,14 @@ module.exports=function(router){
 
     router.post('/mentorregister',function(req,res){
         var mentor=req.body;
+        console.log(mentor);
+        console.log("hellow from mentor registeration");
         if(!mentor.Mentorname||!mentor.Email||
             !mentor.Phoneno||
-            !mentor.Starttime||
-            !mentor.Endtime||
+            !mentor.Starttime_hour||
+            !mentor.Starttime_min||
+            !mentor.Endtime_hour||
+            !mentor.Endtime_min||
             !mentor.StartDate||
             !mentor.EndDate||
             !mentor.technologies.length>0||
@@ -29,6 +33,7 @@ module.exports=function(router){
         }
         else{
             let note=new Mentor(req.body)
+            console.log(note);
             note.save(function(err,note){
                 if(err){
                     return res.status(400).json(err);

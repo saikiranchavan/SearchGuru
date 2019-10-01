@@ -11,21 +11,21 @@ module.exports=function(router){
         if(!user.search||
             !user.startdate||
             !user.enddate||
-            !user.starttime||
-            !user.endtime
+            !user.starttime_hour||
+            !user.starttime_min||
+            !user.endtime_hour||
+            !user.endtime_min
             ){
                 res.json('show_message', {
                     message: "Sorry, you provided worng info", type: "error"});
         }
         else{
-            st=user.starttime.split(":");
-            et=user.endtime.split(":");
-            //console.log(user.starttime+" "+user.endtime)
-            const start_h=parseInt(st[0]);
-            const start_m=parseInt(st[1]);
-            const end_h=parseInt(et[0]);
-            const end_m=parseInt(et[1]);
-            Mentor.find({$and:[{"technologies":user.search},{"StartDate":{$gte:user.startdate}}, {"EndDate":{$lte:user.enddate}}, {"Starttime":{$gte:user.startdate}}, {"Endtime":{$lte:user.enddate}}]},function(err,mentorData){
+            
+            // Mentor.find({$and:[{"technologies":user.search},{"StartDate":{$gte:user.startdate}}, {"EndDate":{$lte:user.enddate}}, {"Starttime_hour":{$gte:user.starttime_hour}},{"Starttime_min":{$gte:user.starttime_min}}, {"Endtime_hour":{$lte:user.endtime_hour}},{"Endtime_min":{$lte:user.endtime_min}}]},function(err,mentorData){
+            //     if(err)return console.log(err);
+            //     res.json(mentorData);
+            // });
+            Mentor.find({"technologies":user.search},function(err,mentorData){
                 if(err)return console.log(err);
                 res.json(mentorData);
             });

@@ -69,14 +69,14 @@
 			<div class="form-group col-sm-3">
 				<label for="example-time-input1" > Start time</label>
 				<div class="col-30">
-					<input class="form-control" #date3="ngModel" [class.is-invalid]="date3.invalid && date3.touched" [(ngModel)]="trainerData.Starttime" type="time"  value="2:3" name="example-time-input3" required>
+					<input class="form-control" #date3="ngModel" [class.is-invalid]="date3.invalid && date3.touched" [(ngModel)]="start_time_string" type="time"  value="2:3" name="example-time-input3" required>
 					<small class="text-danger" [class.d-none]="date3.valid || date3.untouched">Start  time is required</small>
 				</div>
 			</div>
 			<div class="form-group col-sm-3">
 				<label for="example-time-input2" >End time</label>
 				<div class="col-20">
-					<input class="form-control" #date4="ngModel" [class.is-invalid]="date4.invalid && date4.touched" [(ngModel)]="trainerData.Endtime" type="time"  name="example-time-input4" required>
+					<input class="form-control" #date4="ngModel" [class.is-invalid]="date4.invalid && date4.touched" [(ngModel)]="end_time_string" type="time"  name="example-time-input4" required>
 					<small class="text-danger" [class.d-none]="date4.valid || date4.untouched">End time is required</small>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 			
 			
 			</div>
-			<div class="row">
+		<div class="row">
 			
 				<div class="form-group col-sm-4">
 					<label for="linked in profile">LinkedIn ProfileId</label>
@@ -105,18 +105,20 @@
 				<small class="text-danger" [class.d-none]="pass1.untouched||pass2.untouched||checkValidate()">passwords are not matching</small>
 			</div>
 			
-			
+		</div>
+		<div class="row">
+				
 			<div class="form-group col-sm-4">
 				<label for="exper">Experience</label>
 				<input type="number" name="exper" #experience="ngModel" [class.is-invalid]="experience.invalid && experience.touched" name="pass1" [(ngModel)]="trainerData.experience" class="form-control" placeholder="password" required>
 				<small class="text-danger" [class.d-none]="experience.valid || experience.untouched">Experience  is required</small>
 			</div>
-				
-				
-				
-				
-			
-		</div>
+		
+			<div class="form-group col-sm-4">
+					<label for="comment">Profile Description</label>
+					<textarea class="form-control" name="profile_men" #profile="ngModel" [class.is-invalid]="profile.invalid && profile.touched"  [(ngModel)]="trainerData.profile" class="form-control" placeholder="Profile Description" required rows="4" id="comment"></textarea>
+					<small class="text-danger" [class.d-none]="profile.valid || profile.untouched">Profile Description is required</small>
+			</div>
 		<div class="form-group col-sm-4">
 			<label for="sel2">Technologies Your familiar with</label>
 				<select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
@@ -128,6 +130,7 @@
 					<option>Data Science</option>
 				</select>
 				<small class="text-danger" [class.d-none]="grp.valid || grp.untouched">select any one of the technology</small>
+		</div>
 		</div>
 			<div class="wrapper">
 				<!-- {{mentorform.form.invalid}}{{checkValidate()}} -->

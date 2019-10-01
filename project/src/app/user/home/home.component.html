@@ -1,3 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=width-device initial-scale=1.0">
+  <!-- <link href="E:\Bootstrap\css\bootstrap.min.css" rel="stylesheet"> -->
+  <title>Business Unit</title>
+  <script src="E:\jquery-3.4.1.js" type="text/javascript"></script>
+  <script>
+    var check=true;
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("form").hide("fast",function(){
+                check=false;
+                document.getElementById("alert_1").innerHTML="Your data has been submitted";
+            });
+        })
+    })
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  .checked {
+    color: orange;
+  }
+  </style>
+  
+ </head>
+
 <div class="container-fluid">
 <form  #searchForm="ngForm" (ngSubmit)="submit()">
     <div class="row">
@@ -19,26 +47,115 @@
         <div class="form-group col-sm-3">
             <label for="start">End Date</label>
             <input class="form-control " type="date" #enddate="ngModel" [class.is-invalid]="enddate.invalid && enddate.touched" [(ngModel)]="date2" name="edate" placeholder="months" required>
-            <small class="text-danger" [class.d-none]="enddate.valid || enddate.untouched">Name is required</small>
+            <small class="text-danger" [class.d-none]="enddate.valid || enddate.untouched">End date is required</small>
 
         </div>
         <div class="form-group col-sm-3">
             <label for="timestart">Start Time</label>
-            <input class="form-control" type="time"#starttime="ngModel" [(ngModel)]="time1" name="stime" [class.is-invalid]="starttime.invalid && starttime.touched" value="13:45:00" id="example-time-input" required>
-            <small class="text-danger" [class.d-none]="starttime.valid || starttime.untouched">Name is required</small>
+            <input class="form-control" type="time"#starttime="ngModel" [(ngModel)]="start_time_string" name="stime" [class.is-invalid]="starttime.invalid && starttime.touched" value="13:45:00" id="example-time-input" required>
+            <small class="text-danger" [class.d-none]="starttime.valid || starttime.untouched">Start time is required</small>
 
 			
         </div>
         <div class="form-group col-sm-3">
             <label for="timestart">End Time</label>
-            <input class="form-control" type="time" #endtime="ngModel" name="etime" [class.is-invalid]="endtime.invalid && endtime.touched"  [(ngModel)]="time2" value="13:45:00" id="example-time-input" required>
-            <small class="text-danger" [class.d-none]="endtime.valid || endtime.untouched">Name is required</small>
+            <input class="form-control" type="time" #endtime="ngModel" name="etime" [class.is-invalid]="endtime.invalid && endtime.touched"  [(ngModel)]="end_time_string" value="13:45:00" id="example-time-input" required>
+            <small class="text-danger" [class.d-none]="endtime.valid || endtime.untouched">End time is required</small>
 
         </div>    
     </div>
     <div class="wrapper">
      <a><button type="submit"  [disabled]="searchForm.form.invalid" class="btn btn-primary button" >Search</button></a>
     </div>
-</form>
-</div>
 
+
+    <!-- <ul>
+        <li *ngFor="let item of mentorSearchResult">
+                {{item.Mentorname}}<br>
+                {{item.Email}}<br>
+                {{item.Phoneno}}<br>
+                {{item.StartDate}}<br>
+                {{item.EndDate}}<br>
+                {{item.Starttime_hour}}<br>
+                {{item.Starttime_min}}<br>
+                {{item.Endtime_hour}}<br>
+                {{item.Endtime_min}}<br>
+                {{item.technologies}}<br>
+                {{item.Linked}}<br>
+                {{item.Password}}<br>
+                {{item.experience}}<br>
+                {{item.profile}}<br>
+                {{item.rating}}
+        </li>
+    </ul> -->
+       
+</form>
+<!-- <div class="container">
+        <h2>Basic Card</h2>
+        <div *ngFor="let item of mentorSearchResult">
+                <div class="card">
+          <div class="card-body">Basic card :: {{item.Mentorname}}</div>
+        </div>
+    </div></div> -->
+
+
+
+
+<div class="row">
+    <div *ngFor="let item of mentorSearchResult">        
+            <!-- {{item.Mentorname}}<br>
+            {{item.Email}}<br>
+            {{item.Phoneno}}<br> -->
+        <div class="card col-sm-3 " style="width:400px;">
+            <img class="card-img-top" src="assets/images/img_avatar3_1.png" alt="card image">
+            <div class="card-body">
+                
+                
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h4 class="card-title">{{item.Mentorname}}</h4>
+                        <p class="card-text">{{item.profile}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h6 class="card-subtitle">Years of Experience:</h6>
+                        <p class="card-text">{{item.experience}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h6 class="card-subtitle">Technologies Known:</h6>
+                        <ul>
+                        
+                            <li *ngFor="let tech of item.technologies">
+                                {{tech}}
+                            </li>
+                            
+                        </ul>
+
+                    </li>
+                    <li class="list-group-item">
+                        <h6 class="car-subtitle">Fee Charged:</h6>
+                    <p class="card-text">20,000</p>
+                    </li>
+                    <!-- <li class="list-group-item">
+                            <span></span>
+                            <li *ngFor="let r of ratingObj">
+                                <span class="fa fa-star checked"></span>
+                            </li>
+       
+                    </li> -->
+                  </ul>
+                  <div *ngIf="!proposed">
+                        <a  class="btn btn-primary" (click)=check() style="color:white">Propose</a> 
+                  </div>
+                  <div *ngIf="proposed">
+                              <a  class="btn btn-primary" style="color:black; margin-right:90px" disabled >Proposed</a> 
+                              <a  class="btn btn-primary" style="color:white; ">Cancel</a>  
+                  </div>
+            </div>
+            <div class="card-footer" *ngIf="proposed">
+                    <small class="text-muted">Last Proposed 3 days ago</small>
+                </div>
+        </div>
+    </div>
+</div>     
+</div>
+</html>

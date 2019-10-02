@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   acknow;
   acknowledge;
   constructor(private service:UserregisterService,private router:Router) { }
-  userData=new userClass("sai kiran","",1234567890,"");
+  userData=new userClass("sai kiran","",1234567890,"",[]);
   ngOnInit() {
   }
 

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   a;
   username_loc_data=[];
   username_loc=[];
+  email_init="";
   data;
   myObj={'username':this.user,'password':this.pass1}
   @Output() childEvent=new EventEmitter();
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
     
     this.service.getMethod1(this.user,this.pass1).subscribe(data=>{
       console.log(data);
+      this.commonService.provideUser(data[0]);
       this.data=data;
+      
       this.commonService.provideUserName(data[0].Username);
       this.commonService.getUserName();
       this.childEvent.emit(data[0].Username);

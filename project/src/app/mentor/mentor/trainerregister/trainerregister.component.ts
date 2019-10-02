@@ -22,7 +22,7 @@ export class TrainerregisterComponent implements OnInit {
   email_init="";
   trainerData1;
   constructor(private service:RegisterService,private router:Router) { }
-  trainerData=new trainerClass("","",1234567890,new Date(2001,12,23,10,24,23),new Date(2001,10,1,22,10,8),this.start_time_hour,this.start_time_min,this.end_time_hour,this.end_time_min,["",""],"","",1,"",0,[],[]);
+  trainerData=new trainerClass("","",1234567890,new Date(2001,12,23,10,24,23),new Date(2001,10,1,22,10,8),0,0,0,0,["",""],"","",1,"",0,1,[],[]);
   checkValidate(){
    
     if(this.trainerData.Password==this.checkPass){
@@ -74,7 +74,7 @@ export class TrainerregisterComponent implements OnInit {
     
     console.log(this.start_time_hour+" "+this.start_time_min+" "+this.end_time_hour+" "+this.end_time_min);
     
-    this.trainerData1=new trainerClass(this.trainerData.Mentorname,this.trainerData.Email,this.trainerData.Phoneno,this.trainerData.StartDate,this.trainerData.EndDate,this.start_time_hour,this.start_time_min,this.end_time_hour,this.end_time_min,this.trainerData.technologies,this.trainerData.Linked,this.trainerData.Password,this.trainerData.experience,this.trainerData.profile,0,[],[]);
+    this.trainerData1=new trainerClass(this.trainerData.Mentorname,this.trainerData.Email,this.trainerData.Phoneno,this.trainerData.StartDate,this.trainerData.EndDate,this.start_time_hour,this.start_time_min,this.end_time_hour,this.end_time_min,this.trainerData.technologies,this.trainerData.Linked,this.trainerData.Password,this.trainerData.experience,this.trainerData.profile,0,this.trainerData.fees,[],[]);
     console.log(this.trainerData1);
     this.service.trainerRegister(this.trainerData1).subscribe(
       data=>{

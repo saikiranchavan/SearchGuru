@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Time } from '@angular/common';
 import { stringify } from '@angular/compiler/src/util';
 import { UserregisterService } from '../userregister.service';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,9 @@ import { UserregisterService } from '../userregister.service';
 })
 export class HomeComponent implements OnInit {
   //mentorSearchResult
-  constructor(private userService:UserregisterService) { }
+  constructor(private userService:UserregisterService,private commonService:CommonService) { }
   search:string;
+  init=1;
   date1:Date;
   date2:Date;
   start_time_string:String;
@@ -24,16 +26,23 @@ export class HomeComponent implements OnInit {
   end_time_min:Number;
   mentorSearchResult:any=[]
   object;
-  rating_array;
-  proposed :boolean=false;
-  check(){
-    this.proposed=true;
+  rating_array=[];
+  userdata;
+  proposed :boolean[];
+  check(c){
+    
+    this.proposed[c]=true;
+    this.mentorSearchResult.mentorPropose
+    //console.log("inside check"+this.mentorSearchResult[c].Mentorname);
+    //console.log("inside check"+this.commonService.getUser().Username+" "+this.commonService.getUser().Email);
+    this.userdata=this.commonService.getUser();
+    //this.userdata.mentorProposal.push(this.mentorSearchResult[c]._id);
+    console.log(this.userdata.mentorProposal);
+    // this.userService.userUpdate();
+    this.userService.proposeMentor(this.mentorSearchResult[c]);
   }
 
-  ratingObj(){
-    console.log("inside rating obj")
-    this.rating_array=Array(this.mentorSearchResult.rating).fill(3);
-  }
+  
   submit(){
     this.start_time=this.start_time_string.split(":");
     this.end_time=this.end_time_string.split(":");
@@ -69,8 +78,22 @@ export class HomeComponent implements OnInit {
     console.log(this.object);
     this.userService.SearchMentor(this.object).subscribe(
       data=>{
+        var i=0;
         console.log(data);
         this.mentorSearchResult=data;
+        console.log(this.mentorSearchResult[1]._id);
+        this.proposed=new Array(this.mentorSearchResult.length);
+       
+        for(i;i<this.mentorSearchResult.length;i++){
+          this.proposed[i]=false;
+        }
+        
+        if(this.mentorSearchResult.rating>0&&this.mentorSearchResult.rating<=5){
+          this.rating_array=Array(this.mentorSearchResult.rating).fill(3);
+        }
+        else{
+          this.rating_array=[];
+        }
       },
       err=>{
         console.log("no search data is found");

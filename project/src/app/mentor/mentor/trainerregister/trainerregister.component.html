@@ -84,6 +84,33 @@
 			
 			
 			</div>
+		
+		<div class="row">
+				
+				<div class="form-group col-sm-4">
+					<label for="exper">Experience</label>
+					<input type="number" name="exper" #experience="ngModel" [class.is-invalid]="experience.invalid && experience.touched" name="pass1" [(ngModel)]="trainerData.experience" class="form-control" placeholder="Years of Experience" required>
+					<small class="text-danger" [class.d-none]="experience.valid || experience.untouched">Experience  is required</small>
+				</div>
+			
+				<div class="form-group col-sm-4">
+						<label for="comment">Profile Description</label>
+						<textarea class="form-control" name="profile_men" #profile="ngModel" [class.is-invalid]="profile.invalid && profile.touched"  [(ngModel)]="trainerData.profile" class="form-control" placeholder="Profile Description" required rows="4" id="comment"></textarea>
+						<small class="text-danger" [class.d-none]="profile.valid || profile.untouched">Profile Description is required</small>
+				</div>
+			    <div class="form-group col-sm-4">
+				    <label for="sel2">Technologies Your familiar with</label>
+					    <select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
+						
+							<option >Cloud Computing</option>
+							<option>Mean Stack</option>
+							<option>Data Analytics</option>
+							<option>AI Robotics</option>
+							<option>Data Science</option>
+					    </select>
+					<small class="text-danger" [class.d-none]="grp.valid || grp.untouched">select any one of the technology</small>
+				</div>
+			</div>	
 		<div class="row">
 			
 				<div class="form-group col-sm-4">
@@ -106,32 +133,13 @@
 			</div>
 			
 		</div>
-		<div class="row">
-				
-			<div class="form-group col-sm-4">
-				<label for="exper">Experience</label>
-				<input type="number" name="exper" #experience="ngModel" [class.is-invalid]="experience.invalid && experience.touched" name="pass1" [(ngModel)]="trainerData.experience" class="form-control" placeholder="password" required>
-				<small class="text-danger" [class.d-none]="experience.valid || experience.untouched">Experience  is required</small>
-			</div>
-		
-			<div class="form-group col-sm-4">
-					<label for="comment">Profile Description</label>
-					<textarea class="form-control" name="profile_men" #profile="ngModel" [class.is-invalid]="profile.invalid && profile.touched"  [(ngModel)]="trainerData.profile" class="form-control" placeholder="Profile Description" required rows="4" id="comment"></textarea>
-					<small class="text-danger" [class.d-none]="profile.valid || profile.untouched">Profile Description is required</small>
-			</div>
 		<div class="form-group col-sm-4">
-			<label for="sel2">Technologies Your familiar with</label>
-				<select multiple  required class="form-control" #grp="ngModel" [class.is-invalid]="grp.invalid && grp.touched" [(ngModel)]="trainerData.technologies" name="sellist2" >
-					<!-- <option value="" selected>hellow</option> -->
-					<option>Cloud Computing</option>
-					<option>Mean Stack</option>
-					<option>Data Analytics</option>
-					<option>AI Robotics</option>
-					<option>Data Science</option>
-				</select>
-				<small class="text-danger" [class.d-none]="grp.valid || grp.untouched">select any one of the technology</small>
+			<label for="ffee">Fee Charged(including commission)</label>
+			<input type="number" name="fee_name" #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" [(ngModel)]="trainerData.fees" class="form-control" placeholder="Fees Charged" required>
+			<small class="text-danger" [class.d-none]="fee.valid || fee.untouched">password is required</small>
+			<small class="text-danger" [class.d-none]="fee.untouched||fee.untouched">passwords are not matching</small>
 		</div>
-		</div>
+		
 			<div class="wrapper">
 				<!-- {{mentorform.form.invalid}}{{checkValidate()}} -->
 				<button  [disabled]="(mentorform.form.invalid || !(checkValidate()))" type="submit" class="btn btn-primary button_1 col-sm-3" value="submit">Submit</button>

@@ -10,11 +10,8 @@ module.exports=function(router){
         console.log(req.body);
         if(!user.search||
             !user.startdate||
-            !user.enddate||
-            !user.starttime_hour||
-            !user.starttime_min||
-            !user.endtime_hour||
-            !user.endtime_min
+            !user.enddate
+            
             ){
                 res.json('show_message', {
                     message: "Sorry, you provided worng info", type: "error"});

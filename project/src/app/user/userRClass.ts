@@ -3,7 +3,8 @@ export class userClass{
     public Username :String,
     public Email:String,
     public Phoneno:Number,
-    public Password:String){}
+    public Password:String,
+    public mentorProposal:Array<object>){}
 
     
     

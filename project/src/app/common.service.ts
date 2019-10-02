@@ -14,6 +14,15 @@ export class CommonService {
   check_Admin_Login:boolean=false;
   username_loc_data=[];
   username_loc_data1=[];
+  userObject;
+  provideUser(data){
+    console.log("inside provide user"+data.Username);
+    this.userObject=data;
+  }
+  getUser(){
+    console.log("inside getUser"+this.userObject.mentorProposal);
+    return this.userObject;
+  }
   provideUserName(data){
     console.log("this is data inside provide User name"+data);
     this.username1=data;

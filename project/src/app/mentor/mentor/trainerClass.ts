@@ -17,6 +17,7 @@ export class trainerClass{
     public experience:Number,
     public profile:String,
     public rating:Number,
+    public fees:Number,
     public userWhoProposed:Array<string>,
     public userWhoFinalised:Array<string>){}
 

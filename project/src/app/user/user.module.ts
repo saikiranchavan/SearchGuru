@@ -20,17 +20,18 @@ import {HttpClientModule} from '@angular/common/http';
       {path:'register/user_register',component:RegisterComponent},
       {path:"user/mentor_search",component:MentorsearchComponent},
       {path:"user/mentor_search/pay",component:PaymentComponent,canActivate:[AuthGuardService]},
-      {path:'mentor_status/payment',component:PaymentComponent},
+      {path:'mentor_status/payment',component:PaymentComponent,canActivate:[AuthGuardService]},
       {path:'mentor_status',component:MentorStatusComponent,
         children:[
           {path:'',redirectTo:'mentor_status',pathMatch:'full'},
-          {path:'payment',component:PaymentComponent}
+          {path:'payment',component:PaymentComponent,canActivate:[AuthGuardService]}
         ]
       
       },
       
       
     ])
-  ]
+  ],
+  providers: [AuthGuardService]
 })
 export class UserModule { }

@@ -16,6 +16,7 @@ const mentorSchema=new mongoose.Schema({
     experience:{type:Number},
     profile:{type:String},
     rating:{type:Number},
+    fees:{type:Number},
     userWhoProposed:{type:Array},
     userWhoFinalised:{type:Array}
 })

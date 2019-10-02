@@ -16,4 +16,8 @@ export class UserregisterService {
    SearchMentor(object){
      return this.http.post('http://localhost:8091/api/search',object)
    }
+
+   proposeMentor(object){
+     return this.http.put('http://localhost:8091/api/search',object);
+   }
 }

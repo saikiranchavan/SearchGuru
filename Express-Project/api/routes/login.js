@@ -9,7 +9,7 @@ module.exports=function(router){
         let a=req.query.username;
         let b=req.query.password; 
         console.log(a+" "+b);   
-        User.find({$and:[{"Email":a},{"Password":b}]},function(err,UserData){
+        User.findOne({$and:[{"Email":a},{"Password":b}]},function(err,UserData){
             if(err)return console.log("no user found");
             match=UserData;
             if(UserData.length==0){

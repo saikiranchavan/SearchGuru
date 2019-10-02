@@ -1,19 +1,24 @@
 
 <div class="container-fluid">
    
-  <form #myform="ngForm" (ngSubmit)="Login()"  class="form form-login">
+  <form #myform="ngForm" (ngSubmit)="Login()"  class="form form-login" novalidate>
       <h2 style="text-align: center">Login Form</h2>
       <p>{{data}}</p>
       <!-- {{myform.value | json}} -->
       <div class="form-group"  style="margin-top:20px ">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" #email="ngModel" [class.is-invalid]="email.invalid&&email.touched"[(ngModel)]="user" class="form-control" name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+        <!-- <input type="email" #email="ngModel" [class.is-invalid]="email.invalid&&email.touched"[(ngModel)]="user" class="form-control" name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
         <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+        <small class="text-danger" [class.d-none]="!(email.errors?.email || email.errors?.untouched)">Email is invalid</small> -->
+        <input type="email" [email]="email_init" required #email="ngModel" class="form-control" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="user" placeholder="Email" name="email" required>
+				<!-- <small class="text-danger" [class.d-none]="(email.errors?.required||email.errors?.untouched)">Email is required</small> -->
+				<small class="text-danger" *ngIf="email.errors?.required&& email.touched">Email is required</small>
+				<small class="text-danger" [class.d-none]="!(email.errors?.email || email.errors?.untouched)">Email is invalid</small>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" #pass="ngModel" [(ngModel)]="pass1" class="form-control"  #email="ngModel" [class.is-invalid]="pass.invalid&&pass.touched" name="exampleInputPassword1" placeholder="Password" required>
+        <input type="password" #pass="ngModel" [(ngModel)]="pass1" class="form-control"   [class.is-invalid]="pass.invalid&&pass.touched" name="exampleInputPassword1" placeholder="Password" required>
         <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">Password is required</small>
       </div>
       <!-- <div class="form-check">

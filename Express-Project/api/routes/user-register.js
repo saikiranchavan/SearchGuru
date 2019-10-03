@@ -31,4 +31,25 @@ module.exports=function(router){
             })
         }
     })
+
+    router.put('/userregister/:id',function(req,res){
+        var user=req.body;
+        
+        var id=req.params.id;
+        // console.log("inside put in express");
+        console.log(req.body._id+"   id "+id);
+        if(!user.Username||
+            !user.Email||
+            !user.Phoneno||
+            !user.Password){
+                res.json('show_message', {
+                    message: "Sorry, you provided worng info", type: "error"});
+        }
+        else{
+            User.findByIdAndUpdate(id,user, 
+            function(err, response){
+                console.log(response);
+            });
+        }
+    })
 }

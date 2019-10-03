@@ -16,11 +16,11 @@ export class CommonService {
   username_loc_data1=[];
   userObject;
   provideUser(data){
-    console.log("inside provide user"+data.Username);
+    console.log("inside provide user"+data);
     this.userObject=data;
   }
   getUser(){
-    console.log("inside getUser"+this.userObject.mentorProposal);
+    //console.log("inside getUser"+this.userObject.mentorProposal);
     return this.userObject;
   }
   provideUserName(data){

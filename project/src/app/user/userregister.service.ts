@@ -17,7 +17,13 @@ export class UserregisterService {
      return this.http.post('http://localhost:8091/api/search',object)
    }
 
-   proposeMentor(object){
-     return this.http.put('http://localhost:8091/api/search',object);
+   proposeMentor(object,id){
+     console.log(object+" id:"+id)
+     return this.http.put('http://localhost:8091/api/userregister/'+id,object).subscribe(data=>{
+       console.log("got data from express put");
+     },
+     err=>{
+       console.log(err);
+     });
    }
 }

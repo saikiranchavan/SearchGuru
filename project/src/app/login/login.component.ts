@@ -38,12 +38,12 @@ export class LoginComponent implements OnInit {
     
     this.service.getMethod1(this.user,this.pass1).subscribe(data=>{
       console.log(data);
-      this.commonService.provideUser(data[0]);
+      this.commonService.provideUser(data);
       this.data=data;
       
-      this.commonService.provideUserName(data[0].Username);
+      this.commonService.provideUserName(this.data.Username);
       this.commonService.getUserName();
-      this.childEvent.emit(data[0].Username);
+      this.childEvent.emit(this.data.Username);
       this.username_loc=["User",this.user];
       this.localsto.store("user",this.username_loc);
       this.username_loc_data=this.localsto.retrieve("user");

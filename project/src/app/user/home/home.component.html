@@ -86,7 +86,9 @@
     <div *ngFor="let item of mentorSearchResult;let i=index">        
             
         <div class="card col-sm-12 " style="margin-top:15px ;margin-left:60px ;width:400px;">
-            <img class="card-img-top" src="../../../assets/images/img_avatar3_1.png" alt="card image">
+            <img *ngIf="i%3==0" class="card-img-top" src="../../../assets/images/img_avatar3_1.png" alt="card image">
+            <img *ngIf="i%3==1" class="card-img-top" src="../../../assets/images/img_avatar5.png" alt="card image">
+            <img *ngIf="i%3==2" class="card-img-top" src="../../../assets/images/img_avatar1.png" alt="card image">
             <div class="card-body">
                 
                 

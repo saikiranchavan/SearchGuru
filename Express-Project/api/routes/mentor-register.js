@@ -2,12 +2,13 @@ const express=require('express')
 const Mentor=require('../../models/schema_men')
 
 module.exports=function(router){
-    router.get('/mentorregister/:name',function(req,res){
+    router.get('/mentorregister/:id',function(req,res){
         
-        v=req.params.name;
-
-        Mentor.find({"Mentorname":v},function(err,mentorData){
+        v=req.params.id;
+        console.log(v);
+        Mentor.find({"_id":v},function(err,mentorData){
             if(err)return console.log(err);
+            console.log(mentorData);
             res.json(mentorData);
         });
     })
@@ -47,4 +48,30 @@ module.exports=function(router){
             })
         }
     })
+
+    router.put('/mentorregister/:id',function(req,res){
+        var mentor=req.body;
+        var id =req.params.id;
+        if(!mentor.Mentorname||!mentor.Email||
+            !mentor.Phoneno||
+            !mentor.StartDate||
+            !mentor.EndDate||
+            !mentor.technologies.length>0||
+            !mentor.Linked||
+            !mentor.Password||
+            !mentor.profile||
+            !mentor.experience){
+                res.json('show_message', {
+                    message: "Sorry, you provided worng info", type: "error"});
+        }
+        else{
+            console.log("inside update trainer");
+            Mentor.findByIdAndUpdate(id,mentor, 
+                function(err, response){
+                    console.log(response);
+            });
+        }
+    })
+
+
 }

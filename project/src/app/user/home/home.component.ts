@@ -3,6 +3,7 @@ import { Time } from '@angular/common';
 import { stringify } from '@angular/compiler/src/util';
 import { UserregisterService } from '../userregister.service';
 import { CommonService } from 'src/app/common.service';
+import { RegisterService } from 'src/app/mentor/mentor/register.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { CommonService } from 'src/app/common.service';
 })
 export class HomeComponent implements OnInit {
   //mentorSearchResult
-  constructor(private userService:UserregisterService,private commonService:CommonService) { }
+  constructor(private userService:UserregisterService,private commonService:CommonService,private mentorService:RegisterService) { }
   search:string;
   init=1;
   date1:Date;
@@ -32,14 +33,13 @@ export class HomeComponent implements OnInit {
   check(c){
     
     this.proposed[c]=true;
-    this.mentorSearchResult.mentorPropose
-    //console.log("inside check"+this.mentorSearchResult[c].Mentorname);
-    //console.log("inside check"+this.commonService.getUser().Username+" "+this.commonService.getUser().Email);
     this.userdata=this.commonService.getUser();
-    //this.userdata.mentorProposal.push(this.mentorSearchResult[c]._id);
-    console.log(this.userdata.mentorProposal);
-    // this.userService.userUpdate();
-    this.userService.proposeMentor(this.mentorSearchResult[c]);
+    var obj1={"mentorstatus":[this.mentorSearchResult[c]._id,"proposed"]};
+    this.userdata.mentorProposal.push(obj1);
+    var obj2={"userstatus":[this.userdata._id,"proposed"]};
+    this.mentorSearchResult[c].userWhoProposed.push(obj2);
+    this.userService.proposeMentor(this.userdata,this.userdata._id);
+    this.mentorService.updateTrainer(this.mentorSearchResult[c],this.mentorSearchResult[c]._id);
   }
 
   

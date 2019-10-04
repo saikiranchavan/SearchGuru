@@ -6,10 +6,14 @@ module.exports=function(router){
         
         v=req.params.name;
 
-        User.find({"Username":v},function(err,UserData){
+        let promise=User.find({"Username":v}).exec();
+        promise.then(function(err,UserData){
             if(err)return console.log(err);
             res.json(UserData);
         });
+        promise.catch(function(err){
+            return res.status(400).json({message:"unable to get the data from the "})
+        })
     })
 
     router.post('/userregister',function(req,res){

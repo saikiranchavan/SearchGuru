@@ -6,11 +6,15 @@ module.exports=function(router){
         
         v=req.params.id;
         console.log(v);
-        Mentor.find({"_id":v},function(err,mentorData){
+        let promise=Mentor.find({"_id":v});
+        promise.then(function(err,mentorData){
             if(err)return console.log(err);
             console.log(mentorData);
             res.json(mentorData);
         });
+        promise.catch(function(err){
+            return res.status(501).json({message:"unable to get the data from the mentor"})
+        })
     })
 
     router.post('/mentorregister',function(req,res){

@@ -1,6 +1,9 @@
-<!-- <div *ngFor="let item of mentorData">
+<button class="btn btn-primary" (click)="getMentorStatus()">Get Mentor Status</button>
+<div *ngIf="clicked"> 
+    <div *ngFor="let item of mentorData">
     {{item.Mentorname}}
-</div> -->
+</div>
+</div>
 <!-- <div class="card deck">
     <div *ngFor="let item of mentorData">
     <div class="card border-dark mb-3">   

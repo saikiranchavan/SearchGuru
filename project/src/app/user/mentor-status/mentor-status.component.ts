@@ -14,26 +14,16 @@ export class MentorStatusComponent implements OnInit {
   mentorIDs:any=[]
   mentorData:any=[];
   length;
+  clicked=false;
   i=0;
   ngOnInit() {
-    this.mentorIDs=this.commonService.getUser().mentorProposal;
-    //console.log(this.mentorIDs[0].mentorstatus[0]);
     
-    this.length=this.mentorIDs.length;
-    console.log(this.length+" this is the length");
-    for(this.i;this.i<this.length;this.i++){
-      this.mentorService.getTrainer(this.mentorIDs[this.i].mentorstatus[0]).subscribe(data=>{
-        console.log(data);
-        this.mentorData[this.i]=data;
-        console.log(this.mentorData[this.i]);
-      },
-      err=>{
-        console.log(err);
-      });
-       
-       
-     }
-     
   }
+  getMentorStatus(){
+    this.clicked=true;
+    this.mentorData=this.commonService.getMentor();
+    console.log(this.mentorData);
+  }
+
 
 }

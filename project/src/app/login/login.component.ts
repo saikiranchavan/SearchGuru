@@ -3,6 +3,7 @@ import {Router} from '@angular/router'
 import { LoginService } from './login.service';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { CommonService } from '../common.service';
+import { RegisterService } from '../mentor/mentor/register.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { CommonService } from '../common.service';
 export class LoginComponent implements OnInit {
 
   constructor(private router:Router,private service:LoginService,private localsto:LocalStorageService,
-    private sessionSt:SessionStorageService,private commonService:CommonService) { }
+    private sessionSt:SessionStorageService,private commonService:CommonService,private mentorService:RegisterService) { }
   user;
   pass1;
   a;
@@ -19,6 +20,10 @@ export class LoginComponent implements OnInit {
   username_loc=[];
   email_init="";
   data;
+  mentorIDs:any=[]
+  mentorData:any=[];
+  length;
+  i=0;
   myObj={'username':this.user,'password':this.pass1}
   @Output() childEvent=new EventEmitter();
   Login(){
@@ -48,6 +53,30 @@ export class LoginComponent implements OnInit {
       this.localsto.store("user",this.username_loc);
       this.username_loc_data=this.localsto.retrieve("user");
       console.log(this.username_loc_data[0]+" "+this.username_loc_data[1]);
+
+      //mentorstatus
+      this.mentorIDs=this.commonService.getUser().mentorProposal;
+    //console.log(this.mentorIDs[0].mentorstatus[0]);
+    
+    this.length=this.mentorIDs.length;
+    console.log(this.length+" this is the length");
+    for(this.i;this.i<this.length;this.i++){
+      this.mentorService.getTrainer(this.mentorIDs[this.i].mentorstatus[0]).subscribe(data=>{
+        console.log(data);
+        this.mentorData[this.i]=data;
+        console.log(this.mentorData[this.i]);
+        console.log("hello from mentorData which is fed")
+      },
+      err=>{
+        console.log(err);
+      });
+       
+       
+     }
+     
+     this.commonService.provideMentor(this.mentorData);
+
+
       this.router.navigate(['/home']);
     },
     err=>{

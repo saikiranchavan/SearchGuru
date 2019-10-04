@@ -15,6 +15,7 @@ export class CommonService {
   username_loc_data=[];
   username_loc_data1=[];
   userObject;
+  mentorObject:any=[];
   provideUser(data){
     console.log("inside provide user"+data);
     this.userObject=data;
@@ -22,6 +23,15 @@ export class CommonService {
   getUser(){
     //console.log("inside getUser"+this.userObject.mentorProposal);
     return this.userObject;
+  }
+
+  provideMentor(data){
+    this.mentorObject=data;
+
+  }
+
+  getMentor(){
+    return this.mentorObject;
   }
   provideUserName(data){
     console.log("this is data inside provide User name"+data);

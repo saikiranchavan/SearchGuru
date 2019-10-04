@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { trainerClass } from './trainerClass';
+import { pipe, Observable } from 'rxjs'; 
+import { trainerInterface } from './trainerInterface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
+    mentorData:any=[];
 
   constructor(private http:HttpClient) { }
+  
   acknowledge;
   trainerRegister(trainerData){
    // const c=new trainerClass(a,b,c,d,e,f);
@@ -15,7 +19,7 @@ export class RegisterService {
   }
 
   getTrainer(id){
-    return this.http.get('http://localhost:8091/api/mentorregister/'+id)
+    return this.http.get('http://localhost:8091/api/mentorregister/'+id);
   }
 
   updateTrainer(object,id){
